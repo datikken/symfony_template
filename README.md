@@ -43,6 +43,16 @@ docker-compose run  php-fpm bash
 
 ### Webserver (Nginx)
 
+## Windows:
+edit C:\Windows\System32\drivers\etc\hosts
+
+## Mac
+sudo nano /etc/hosts
+
+```
+127.0.0.1 {your_local_domain}
+```
+
 ## Link to project
 
-- [Link to Symfony project in port 80](http://localhost "localhost")...
+- [Link to Symfony project in port 80](http://{your_local_domain} "localhost")...
