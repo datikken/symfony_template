@@ -56,3 +56,11 @@ sudo nano /etc/hosts
 ## Link to project
 
 - [Link to Symfony project in port 80](http://{your_local_domain} "localhost")...
+
+
+## Usefull commands:
+```
+php bin/console doctrine:migrations:sync-metadata-storage
+```
+
+https://symfony.com/doc/6.2/the-fast-track/en/13-lifecycle.html
