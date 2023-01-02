@@ -2,8 +2,7 @@ version: '3'
 
 services:
   database:
-    build:
-      context: ./docker/database
+    image: mysql:8
     environment:
       - MYSQL_DATABASE=${DATABASE_NAME}
       - MYSQL_USER=${DATABASE_USER}
@@ -12,7 +11,6 @@ services:
     ports:
       - "3309:3306"
     volumes:
-      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./docker/database/data:/var/lib/mysql
 
   phpmyadmin:
