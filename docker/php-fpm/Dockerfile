@@ -6,9 +6,11 @@ RUN chmod +x /usr/bin/wait-for-it
 
 RUN apk --update --no-cache add git
 
-RUN apk add bash
+RUN apk add bash icu-dev
 
 RUN docker-php-ext-install pdo_mysql
+
+RUN docker-php-ext-configure intl && docker-php-ext-install intl
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
