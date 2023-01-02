@@ -2,8 +2,7 @@ version: '3'
 
 services:
   database:
-    build:
-      context: ./docker/database
+    image: mysql:8
     environment:
       - MYSQL_DATABASE=${DATABASE_NAME}
       - MYSQL_USER=${DATABASE_USER}
