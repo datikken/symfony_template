@@ -56,3 +56,8 @@ sudo nano /etc/hosts
 ## Link to project
 
 - [Link to Symfony project in port 80](http://{your_local_domain} "localhost")...
+
+## To get password hash:
+```
+php bin/console security:hash-password
+```
