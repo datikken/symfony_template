@@ -2,8 +2,7 @@ version: '3'
 
 services:
   database:
-    build:
-      context: ./docker/database
+    image: mysql:8
     environment:
       - MYSQL_DATABASE=${DATABASE_NAME}
       - MYSQL_USER=${DATABASE_USER}
@@ -12,22 +11,21 @@ services:
     ports:
       - "3309:3306"
     volumes:
-      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./docker/database/data:/var/lib/mysql
 
   phpmyadmin:
-        depends_on:
-            - database
-        image: phpmyadmin
-        links:
-          - database
-        restart: always
-        ports:
-            - 8080:80
-        environment:
-            PMA_HOST: database
-            PMA_PORT: 3306
-            PMA_ARBITRARY: 1
+    depends_on:
+      - database
+    image: phpmyadmin
+    links:
+      - database
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      PMA_HOST: database
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
 
   php-fpm:
     build:
