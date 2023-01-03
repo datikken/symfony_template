@@ -61,3 +61,18 @@ sudo nano /etc/hosts
 ```
 php bin/console security:hash-password
 ```
+
+https://symfony.com/doc/6.2/the-fast-track/en/15-security.html
+
+Try:
+php bin/console make:registration-form
+
+## Testing:
+
+php bin/console doctrine:database:create --env=test
+
+php bin/console doctrine:migrations:migrate -n --env=test
+
+composer req orm-fixtures --dev
+
+console doctrine:fixtures:load --env=test
