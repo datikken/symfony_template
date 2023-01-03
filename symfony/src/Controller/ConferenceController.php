@@ -15,11 +15,14 @@ use App\Repository\CommentRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use App\Message\CommentMessage;
+use Symfony\Component\Messenger\MessageBusInterface;
 
 class ConferenceController extends AbstractController
 {
     public function __construct(
         private EntityManagerInterface $entityManager,
+        private MessageBusInterface $bus,
     ) {}
 
     #[Route('/conference', name: 'app_conference')]
@@ -58,6 +61,15 @@ class ConferenceController extends AbstractController
 
             $this->entityManager->persist($comment);
             $this->entityManager->flush();
+            
+            $context = [
+                'user_ip' => $request->getClientIp(),
+                'user_agent' => $request->headers->get('user-agent'),
+                'referrer' => $request->headers->get('referer'),
+                'permalink' => $request->getUri(),
+            ];
+
+            $this->bus->dispatch(new CommentMessage($comment->getId(), $context));
 
             return $this->redirectToRoute('conference', ['slug' => $conference->getSlug()]);
         }
