@@ -19,15 +19,12 @@ class CommentMessageHandler
     public function __invoke(CommentMessage $message)
     {
         $comment = $this->commentRepository->find($message->getId());
+
         if (!$comment) {
             return;
         }
 
-        if (2 === $this->spamChecker->getSpamScore($comment, $message->getContext())) {
-            $comment->setState('spam');
-        } else {
-            $comment->setState('published');
-        }
+        $comment->setState('published');
 
         $this->entityManager->flush();
     }

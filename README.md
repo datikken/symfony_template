@@ -78,3 +78,7 @@ console doctrine:fixtures:load --env=test
 ## Async
 
 composer req doctrine-messenger
+
+## Start messages consumer
+
+php bin/console messenger:consume async -vv
