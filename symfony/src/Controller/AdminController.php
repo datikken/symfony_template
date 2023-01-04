@@ -12,6 +12,7 @@ use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 
+#[Route('/admin')]
 class AdminController extends AbstractController
 {
     public function __construct(
@@ -21,7 +22,7 @@ class AdminController extends AbstractController
     ) {
     }
 
-    #[Route('/admin/comment/review/{id}', name: 'review_comment')]
+    #[Route('/comment/review/{id}', name: 'review_comment')]
     public function reviewComment(Request $request, Comment $comment): Response
     {
         $accepted = !$request->query->get('reject');

@@ -18,14 +18,8 @@
             <h1>
                 <a href="{{ path('app_conference') }}">Guestbook</a>
             </h1>
-            {% if conferences is defined %}
-            <ul>
-                {% for conference in conferences %}
-                    <li><a href="{{ path('conference', { slug: conference.slug }) }}">{{ conference }}</a></li>
-                {% endfor %}
-            </ul>
-            <hr />
-            {% endif %}
+            {{ render_esi(path('conference_header')) }}
+            <hr/>
         </header>
         {% block body %}{% endblock %}
     </body>

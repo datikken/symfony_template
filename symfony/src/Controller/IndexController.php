@@ -10,9 +10,7 @@ class IndexController extends AbstractController
 {
     private $adminEmail = 'test@mail.com';
     #[Route('/', name: 'app_index')]
-    public function index(
-        MailerInterface $mailer
-    ): Response
+    public function index(): Response
     {
         return $this->render('index/index.html.twig', [
             'controller_name' => 'IndexController',
