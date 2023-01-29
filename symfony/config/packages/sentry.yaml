@@ -4,8 +4,17 @@ when@prod:
         traces_sample_rate: 1.0
         # Or provide a custom sampler:
         traces_sampler: 'sentry.callback.traces_sampler'
-    sentry:
         dsn: '%env(SENTRY_DSN)%'
+        tracing:
+            enabled: true
+        dbal: # DB queries
+            enabled: true
+        cache: # cache pools
+            enabled: true
+        twig: # templating engine
+            enabled: false
+        http_client: # Symfony HTTP client
+            enabled: true
     monolog:
         handlers:
             sentry:
