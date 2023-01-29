@@ -11,22 +11,13 @@
             "config/packages/test/dama_doctrine_test_bundle.yaml"
         ]
     },
-    "doctrine/annotations": {
-        "version": "1.14",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "main",
-            "version": "1.10",
-            "ref": "64d8583af5ea57b7afa4aba4b159907f3a148b05"
-        }
-    },
     "doctrine/doctrine-bundle": {
         "version": "2.8",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",
             "version": "2.4",
-            "ref": "5b7882dd9d05ef9b7e71fceed66af1ea573a70d4"
+            "ref": "013b823e7fee65890b23e40f31e6667a1ac519ac"
         },
         "files": [
             "config/packages/doctrine.yaml",
@@ -82,16 +73,16 @@
             "tests/bootstrap.php"
         ]
     },
-    "sensio/framework-extra-bundle": {
-        "version": "6.2",
+    "sentry/sentry-symfony": {
+        "version": "4.5",
         "recipe": {
-            "repo": "github.com/symfony/recipes",
+            "repo": "github.com/symfony/recipes-contrib",
             "branch": "main",
-            "version": "5.2",
-            "ref": "fb7e19da7f013d0d422fa9bce16f5c510e27609b"
+            "version": "4.0",
+            "ref": "9ac202e84b6fb3c276cb3d7846006e0df65272d0"
         },
         "files": [
-            "config/packages/sensio_framework_extra.yaml"
+            "config/packages/sentry.yaml"
         ]
     },
     "symfony/console": {
@@ -168,6 +159,18 @@
         },
         "files": [
             "config/packages/messenger.yaml"
+        ]
+    },
+    "symfony/monolog-bundle": {
+        "version": "3.8",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "3.7",
+            "ref": "213676c4ec929f046dfde5ea8e97625b81bc0578"
+        },
+        "files": [
+            "config/packages/monolog.yaml"
         ]
     },
     "symfony/phpunit-bridge": {

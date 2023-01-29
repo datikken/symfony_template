@@ -10,7 +10,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ConferenceRepository;
-use App\Entity\Conference;
 use App\Repository\CommentRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
@@ -21,6 +20,7 @@ use Symfony\Component\Messenger\MessageBusInterface;
 class ConferenceController extends AbstractController
 {
     public function __construct(
+        private ConferenceRepository $conferenceRepository,
         private EntityManagerInterface $entityManager,
         private MessageBusInterface $bus,
     ) {}
@@ -44,11 +44,11 @@ class ConferenceController extends AbstractController
     #[Route('/conference/{slug}', name: 'conference')]
     public function show(
         Request $request,
-        Conference $conference,
         CommentRepository $commentRepository,
         #[Autowire('%photo_dir%')] string $photoDir,
     ): Response    
     {
+        $conference = $this->conferenceRepository->findOneBy(['slug' => $request->get("slug")]);
         $comment = new Comment();
         $form = $this->createForm(CommentFormType::class, $comment);
         $form->handleRequest($request);
