@@ -9,16 +9,13 @@ use Psr\Log\LoggerInterface;
 
 class IndexController extends AbstractController
 {
-    private $adminEmail = 'test@mail.com';
-
     #[Route('/', name: 'app_index')]
     public function index(): Response
     {
         // the following code will test if monolog integration logs to sentry
         
         return $this->render('index/index.html.twig', [
-            'controller_name' => 'IndexController',
-            'undef' => $err
+            'controller_name' => 'IndexController'
         ]);
     }
 }
